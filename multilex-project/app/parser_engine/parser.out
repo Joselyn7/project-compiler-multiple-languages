@@ -1,0 +1,792 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    FUNCTION
+    LPAREN
+    RPAREN
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement_list
+Rule 2     statement_list -> statement_list statement
+Rule 3     statement_list -> statement
+Rule 4     statement -> var_decl
+Rule 5     statement -> assignment
+Rule 6     statement -> return_stmt
+Rule 7     var_decl -> VAR var_list optional_semicolon
+Rule 8     var_decl -> LET var_list optional_semicolon
+Rule 9     var_decl -> CONST var_list optional_semicolon
+Rule 10    var_list -> var_list COMMA var_item
+Rule 11    var_list -> var_item
+Rule 12    var_item -> IDENTIFIER ASSIGN expression
+Rule 13    var_item -> IDENTIFIER
+Rule 14    assignment -> IDENTIFIER ASSIGN expression optional_semicolon
+Rule 15    return_stmt -> RETURN expression optional_semicolon
+Rule 16    expression -> expression PLUS expression
+Rule 17    expression -> expression MINUS expression
+Rule 18    expression -> expression TIMES expression
+Rule 19    expression -> expression DIVIDE expression
+Rule 20    expression -> NUMBER
+Rule 21    expression -> IDENTIFIER
+Rule 22    optional_semicolon -> SEMICOLON
+Rule 23    optional_semicolon -> empty
+Rule 24    empty -> <empty>
+
+Terminals, with rules where they appear
+
+ASSIGN               : 12 14
+COMMA                : 10
+CONST                : 9
+DIVIDE               : 19
+FUNCTION             : 
+IDENTIFIER           : 12 13 14 21
+LET                  : 8
+LPAREN               : 
+MINUS                : 17
+NUMBER               : 20
+PLUS                 : 16
+RETURN               : 15
+RPAREN               : 
+SEMICOLON            : 22
+TIMES                : 18
+VAR                  : 7
+error                : 
+
+Nonterminals, with rules where they appear
+
+assignment           : 5
+empty                : 23
+expression           : 12 14 15 16 16 17 17 18 18 19 19
+optional_semicolon   : 7 8 9 14 15
+program              : 0
+return_stmt          : 6
+statement            : 2 3
+statement_list       : 1 2
+var_decl             : 4
+var_item             : 10 11
+var_list             : 7 8 9 10
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement_list
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (4) statement -> . var_decl
+    (5) statement -> . assignment
+    (6) statement -> . return_stmt
+    (7) var_decl -> . VAR var_list optional_semicolon
+    (8) var_decl -> . LET var_list optional_semicolon
+    (9) var_decl -> . CONST var_list optional_semicolon
+    (14) assignment -> . IDENTIFIER ASSIGN expression optional_semicolon
+    (15) return_stmt -> . RETURN expression optional_semicolon
+
+    VAR             shift and go to state 7
+    LET             shift and go to state 8
+    CONST           shift and go to state 9
+    IDENTIFIER      shift and go to state 10
+    RETURN          shift and go to state 11
+
+    program                        shift and go to state 1
+    statement_list                 shift and go to state 2
+    statement                      shift and go to state 3
+    var_decl                       shift and go to state 4
+    assignment                     shift and go to state 5
+    return_stmt                    shift and go to state 6
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statement_list .
+    (2) statement_list -> statement_list . statement
+    (4) statement -> . var_decl
+    (5) statement -> . assignment
+    (6) statement -> . return_stmt
+    (7) var_decl -> . VAR var_list optional_semicolon
+    (8) var_decl -> . LET var_list optional_semicolon
+    (9) var_decl -> . CONST var_list optional_semicolon
+    (14) assignment -> . IDENTIFIER ASSIGN expression optional_semicolon
+    (15) return_stmt -> . RETURN expression optional_semicolon
+
+    $end            reduce using rule 1 (program -> statement_list .)
+    VAR             shift and go to state 7
+    LET             shift and go to state 8
+    CONST           shift and go to state 9
+    IDENTIFIER      shift and go to state 10
+    RETURN          shift and go to state 11
+
+    statement                      shift and go to state 12
+    var_decl                       shift and go to state 4
+    assignment                     shift and go to state 5
+    return_stmt                    shift and go to state 6
+
+state 3
+
+    (3) statement_list -> statement .
+
+    VAR             reduce using rule 3 (statement_list -> statement .)
+    LET             reduce using rule 3 (statement_list -> statement .)
+    CONST           reduce using rule 3 (statement_list -> statement .)
+    IDENTIFIER      reduce using rule 3 (statement_list -> statement .)
+    RETURN          reduce using rule 3 (statement_list -> statement .)
+    $end            reduce using rule 3 (statement_list -> statement .)
+
+
+state 4
+
+    (4) statement -> var_decl .
+
+    VAR             reduce using rule 4 (statement -> var_decl .)
+    LET             reduce using rule 4 (statement -> var_decl .)
+    CONST           reduce using rule 4 (statement -> var_decl .)
+    IDENTIFIER      reduce using rule 4 (statement -> var_decl .)
+    RETURN          reduce using rule 4 (statement -> var_decl .)
+    $end            reduce using rule 4 (statement -> var_decl .)
+
+
+state 5
+
+    (5) statement -> assignment .
+
+    VAR             reduce using rule 5 (statement -> assignment .)
+    LET             reduce using rule 5 (statement -> assignment .)
+    CONST           reduce using rule 5 (statement -> assignment .)
+    IDENTIFIER      reduce using rule 5 (statement -> assignment .)
+    RETURN          reduce using rule 5 (statement -> assignment .)
+    $end            reduce using rule 5 (statement -> assignment .)
+
+
+state 6
+
+    (6) statement -> return_stmt .
+
+    VAR             reduce using rule 6 (statement -> return_stmt .)
+    LET             reduce using rule 6 (statement -> return_stmt .)
+    CONST           reduce using rule 6 (statement -> return_stmt .)
+    IDENTIFIER      reduce using rule 6 (statement -> return_stmt .)
+    RETURN          reduce using rule 6 (statement -> return_stmt .)
+    $end            reduce using rule 6 (statement -> return_stmt .)
+
+
+state 7
+
+    (7) var_decl -> VAR . var_list optional_semicolon
+    (10) var_list -> . var_list COMMA var_item
+    (11) var_list -> . var_item
+    (12) var_item -> . IDENTIFIER ASSIGN expression
+    (13) var_item -> . IDENTIFIER
+
+    IDENTIFIER      shift and go to state 15
+
+    var_list                       shift and go to state 13
+    var_item                       shift and go to state 14
+
+state 8
+
+    (8) var_decl -> LET . var_list optional_semicolon
+    (10) var_list -> . var_list COMMA var_item
+    (11) var_list -> . var_item
+    (12) var_item -> . IDENTIFIER ASSIGN expression
+    (13) var_item -> . IDENTIFIER
+
+    IDENTIFIER      shift and go to state 15
+
+    var_list                       shift and go to state 16
+    var_item                       shift and go to state 14
+
+state 9
+
+    (9) var_decl -> CONST . var_list optional_semicolon
+    (10) var_list -> . var_list COMMA var_item
+    (11) var_list -> . var_item
+    (12) var_item -> . IDENTIFIER ASSIGN expression
+    (13) var_item -> . IDENTIFIER
+
+    IDENTIFIER      shift and go to state 15
+
+    var_list                       shift and go to state 17
+    var_item                       shift and go to state 14
+
+state 10
+
+    (14) assignment -> IDENTIFIER . ASSIGN expression optional_semicolon
+
+    ASSIGN          shift and go to state 18
+
+
+state 11
+
+    (15) return_stmt -> RETURN . expression optional_semicolon
+    (16) expression -> . expression PLUS expression
+    (17) expression -> . expression MINUS expression
+    (18) expression -> . expression TIMES expression
+    (19) expression -> . expression DIVIDE expression
+    (20) expression -> . NUMBER
+    (21) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 20
+    IDENTIFIER      shift and go to state 21
+
+    expression                     shift and go to state 19
+
+state 12
+
+    (2) statement_list -> statement_list statement .
+
+    VAR             reduce using rule 2 (statement_list -> statement_list statement .)
+    LET             reduce using rule 2 (statement_list -> statement_list statement .)
+    CONST           reduce using rule 2 (statement_list -> statement_list statement .)
+    IDENTIFIER      reduce using rule 2 (statement_list -> statement_list statement .)
+    RETURN          reduce using rule 2 (statement_list -> statement_list statement .)
+    $end            reduce using rule 2 (statement_list -> statement_list statement .)
+
+
+state 13
+
+    (7) var_decl -> VAR var_list . optional_semicolon
+    (10) var_list -> var_list . COMMA var_item
+    (22) optional_semicolon -> . SEMICOLON
+    (23) optional_semicolon -> . empty
+    (24) empty -> .
+
+    COMMA           shift and go to state 23
+    SEMICOLON       shift and go to state 24
+    VAR             reduce using rule 24 (empty -> .)
+    LET             reduce using rule 24 (empty -> .)
+    CONST           reduce using rule 24 (empty -> .)
+    IDENTIFIER      reduce using rule 24 (empty -> .)
+    RETURN          reduce using rule 24 (empty -> .)
+    $end            reduce using rule 24 (empty -> .)
+
+    optional_semicolon             shift and go to state 22
+    empty                          shift and go to state 25
+
+state 14
+
+    (11) var_list -> var_item .
+
+    COMMA           reduce using rule 11 (var_list -> var_item .)
+    SEMICOLON       reduce using rule 11 (var_list -> var_item .)
+    VAR             reduce using rule 11 (var_list -> var_item .)
+    LET             reduce using rule 11 (var_list -> var_item .)
+    CONST           reduce using rule 11 (var_list -> var_item .)
+    IDENTIFIER      reduce using rule 11 (var_list -> var_item .)
+    RETURN          reduce using rule 11 (var_list -> var_item .)
+    $end            reduce using rule 11 (var_list -> var_item .)
+
+
+state 15
+
+    (12) var_item -> IDENTIFIER . ASSIGN expression
+    (13) var_item -> IDENTIFIER .
+
+    ASSIGN          shift and go to state 26
+    COMMA           reduce using rule 13 (var_item -> IDENTIFIER .)
+    SEMICOLON       reduce using rule 13 (var_item -> IDENTIFIER .)
+    VAR             reduce using rule 13 (var_item -> IDENTIFIER .)
+    LET             reduce using rule 13 (var_item -> IDENTIFIER .)
+    CONST           reduce using rule 13 (var_item -> IDENTIFIER .)
+    IDENTIFIER      reduce using rule 13 (var_item -> IDENTIFIER .)
+    RETURN          reduce using rule 13 (var_item -> IDENTIFIER .)
+    $end            reduce using rule 13 (var_item -> IDENTIFIER .)
+
+
+state 16
+
+    (8) var_decl -> LET var_list . optional_semicolon
+    (10) var_list -> var_list . COMMA var_item
+    (22) optional_semicolon -> . SEMICOLON
+    (23) optional_semicolon -> . empty
+    (24) empty -> .
+
+    COMMA           shift and go to state 23
+    SEMICOLON       shift and go to state 24
+    VAR             reduce using rule 24 (empty -> .)
+    LET             reduce using rule 24 (empty -> .)
+    CONST           reduce using rule 24 (empty -> .)
+    IDENTIFIER      reduce using rule 24 (empty -> .)
+    RETURN          reduce using rule 24 (empty -> .)
+    $end            reduce using rule 24 (empty -> .)
+
+    optional_semicolon             shift and go to state 27
+    empty                          shift and go to state 25
+
+state 17
+
+    (9) var_decl -> CONST var_list . optional_semicolon
+    (10) var_list -> var_list . COMMA var_item
+    (22) optional_semicolon -> . SEMICOLON
+    (23) optional_semicolon -> . empty
+    (24) empty -> .
+
+    COMMA           shift and go to state 23
+    SEMICOLON       shift and go to state 24
+    VAR             reduce using rule 24 (empty -> .)
+    LET             reduce using rule 24 (empty -> .)
+    CONST           reduce using rule 24 (empty -> .)
+    IDENTIFIER      reduce using rule 24 (empty -> .)
+    RETURN          reduce using rule 24 (empty -> .)
+    $end            reduce using rule 24 (empty -> .)
+
+    optional_semicolon             shift and go to state 28
+    empty                          shift and go to state 25
+
+state 18
+
+    (14) assignment -> IDENTIFIER ASSIGN . expression optional_semicolon
+    (16) expression -> . expression PLUS expression
+    (17) expression -> . expression MINUS expression
+    (18) expression -> . expression TIMES expression
+    (19) expression -> . expression DIVIDE expression
+    (20) expression -> . NUMBER
+    (21) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 20
+    IDENTIFIER      shift and go to state 21
+
+    expression                     shift and go to state 29
+
+state 19
+
+    (15) return_stmt -> RETURN expression . optional_semicolon
+    (16) expression -> expression . PLUS expression
+    (17) expression -> expression . MINUS expression
+    (18) expression -> expression . TIMES expression
+    (19) expression -> expression . DIVIDE expression
+    (22) optional_semicolon -> . SEMICOLON
+    (23) optional_semicolon -> . empty
+    (24) empty -> .
+
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
+    SEMICOLON       shift and go to state 24
+    VAR             reduce using rule 24 (empty -> .)
+    LET             reduce using rule 24 (empty -> .)
+    CONST           reduce using rule 24 (empty -> .)
+    IDENTIFIER      reduce using rule 24 (empty -> .)
+    RETURN          reduce using rule 24 (empty -> .)
+    $end            reduce using rule 24 (empty -> .)
+
+    optional_semicolon             shift and go to state 30
+    empty                          shift and go to state 25
+
+state 20
+
+    (20) expression -> NUMBER .
+
+    PLUS            reduce using rule 20 (expression -> NUMBER .)
+    MINUS           reduce using rule 20 (expression -> NUMBER .)
+    TIMES           reduce using rule 20 (expression -> NUMBER .)
+    DIVIDE          reduce using rule 20 (expression -> NUMBER .)
+    SEMICOLON       reduce using rule 20 (expression -> NUMBER .)
+    VAR             reduce using rule 20 (expression -> NUMBER .)
+    LET             reduce using rule 20 (expression -> NUMBER .)
+    CONST           reduce using rule 20 (expression -> NUMBER .)
+    IDENTIFIER      reduce using rule 20 (expression -> NUMBER .)
+    RETURN          reduce using rule 20 (expression -> NUMBER .)
+    $end            reduce using rule 20 (expression -> NUMBER .)
+    COMMA           reduce using rule 20 (expression -> NUMBER .)
+
+
+state 21
+
+    (21) expression -> IDENTIFIER .
+
+    PLUS            reduce using rule 21 (expression -> IDENTIFIER .)
+    MINUS           reduce using rule 21 (expression -> IDENTIFIER .)
+    TIMES           reduce using rule 21 (expression -> IDENTIFIER .)
+    DIVIDE          reduce using rule 21 (expression -> IDENTIFIER .)
+    SEMICOLON       reduce using rule 21 (expression -> IDENTIFIER .)
+    VAR             reduce using rule 21 (expression -> IDENTIFIER .)
+    LET             reduce using rule 21 (expression -> IDENTIFIER .)
+    CONST           reduce using rule 21 (expression -> IDENTIFIER .)
+    IDENTIFIER      reduce using rule 21 (expression -> IDENTIFIER .)
+    RETURN          reduce using rule 21 (expression -> IDENTIFIER .)
+    $end            reduce using rule 21 (expression -> IDENTIFIER .)
+    COMMA           reduce using rule 21 (expression -> IDENTIFIER .)
+
+
+state 22
+
+    (7) var_decl -> VAR var_list optional_semicolon .
+
+    VAR             reduce using rule 7 (var_decl -> VAR var_list optional_semicolon .)
+    LET             reduce using rule 7 (var_decl -> VAR var_list optional_semicolon .)
+    CONST           reduce using rule 7 (var_decl -> VAR var_list optional_semicolon .)
+    IDENTIFIER      reduce using rule 7 (var_decl -> VAR var_list optional_semicolon .)
+    RETURN          reduce using rule 7 (var_decl -> VAR var_list optional_semicolon .)
+    $end            reduce using rule 7 (var_decl -> VAR var_list optional_semicolon .)
+
+
+state 23
+
+    (10) var_list -> var_list COMMA . var_item
+    (12) var_item -> . IDENTIFIER ASSIGN expression
+    (13) var_item -> . IDENTIFIER
+
+    IDENTIFIER      shift and go to state 15
+
+    var_item                       shift and go to state 35
+
+state 24
+
+    (22) optional_semicolon -> SEMICOLON .
+
+    VAR             reduce using rule 22 (optional_semicolon -> SEMICOLON .)
+    LET             reduce using rule 22 (optional_semicolon -> SEMICOLON .)
+    CONST           reduce using rule 22 (optional_semicolon -> SEMICOLON .)
+    IDENTIFIER      reduce using rule 22 (optional_semicolon -> SEMICOLON .)
+    RETURN          reduce using rule 22 (optional_semicolon -> SEMICOLON .)
+    $end            reduce using rule 22 (optional_semicolon -> SEMICOLON .)
+
+
+state 25
+
+    (23) optional_semicolon -> empty .
+
+    VAR             reduce using rule 23 (optional_semicolon -> empty .)
+    LET             reduce using rule 23 (optional_semicolon -> empty .)
+    CONST           reduce using rule 23 (optional_semicolon -> empty .)
+    IDENTIFIER      reduce using rule 23 (optional_semicolon -> empty .)
+    RETURN          reduce using rule 23 (optional_semicolon -> empty .)
+    $end            reduce using rule 23 (optional_semicolon -> empty .)
+
+
+state 26
+
+    (12) var_item -> IDENTIFIER ASSIGN . expression
+    (16) expression -> . expression PLUS expression
+    (17) expression -> . expression MINUS expression
+    (18) expression -> . expression TIMES expression
+    (19) expression -> . expression DIVIDE expression
+    (20) expression -> . NUMBER
+    (21) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 20
+    IDENTIFIER      shift and go to state 21
+
+    expression                     shift and go to state 36
+
+state 27
+
+    (8) var_decl -> LET var_list optional_semicolon .
+
+    VAR             reduce using rule 8 (var_decl -> LET var_list optional_semicolon .)
+    LET             reduce using rule 8 (var_decl -> LET var_list optional_semicolon .)
+    CONST           reduce using rule 8 (var_decl -> LET var_list optional_semicolon .)
+    IDENTIFIER      reduce using rule 8 (var_decl -> LET var_list optional_semicolon .)
+    RETURN          reduce using rule 8 (var_decl -> LET var_list optional_semicolon .)
+    $end            reduce using rule 8 (var_decl -> LET var_list optional_semicolon .)
+
+
+state 28
+
+    (9) var_decl -> CONST var_list optional_semicolon .
+
+    VAR             reduce using rule 9 (var_decl -> CONST var_list optional_semicolon .)
+    LET             reduce using rule 9 (var_decl -> CONST var_list optional_semicolon .)
+    CONST           reduce using rule 9 (var_decl -> CONST var_list optional_semicolon .)
+    IDENTIFIER      reduce using rule 9 (var_decl -> CONST var_list optional_semicolon .)
+    RETURN          reduce using rule 9 (var_decl -> CONST var_list optional_semicolon .)
+    $end            reduce using rule 9 (var_decl -> CONST var_list optional_semicolon .)
+
+
+state 29
+
+    (14) assignment -> IDENTIFIER ASSIGN expression . optional_semicolon
+    (16) expression -> expression . PLUS expression
+    (17) expression -> expression . MINUS expression
+    (18) expression -> expression . TIMES expression
+    (19) expression -> expression . DIVIDE expression
+    (22) optional_semicolon -> . SEMICOLON
+    (23) optional_semicolon -> . empty
+    (24) empty -> .
+
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
+    SEMICOLON       shift and go to state 24
+    VAR             reduce using rule 24 (empty -> .)
+    LET             reduce using rule 24 (empty -> .)
+    CONST           reduce using rule 24 (empty -> .)
+    IDENTIFIER      reduce using rule 24 (empty -> .)
+    RETURN          reduce using rule 24 (empty -> .)
+    $end            reduce using rule 24 (empty -> .)
+
+    optional_semicolon             shift and go to state 37
+    empty                          shift and go to state 25
+
+state 30
+
+    (15) return_stmt -> RETURN expression optional_semicolon .
+
+    VAR             reduce using rule 15 (return_stmt -> RETURN expression optional_semicolon .)
+    LET             reduce using rule 15 (return_stmt -> RETURN expression optional_semicolon .)
+    CONST           reduce using rule 15 (return_stmt -> RETURN expression optional_semicolon .)
+    IDENTIFIER      reduce using rule 15 (return_stmt -> RETURN expression optional_semicolon .)
+    RETURN          reduce using rule 15 (return_stmt -> RETURN expression optional_semicolon .)
+    $end            reduce using rule 15 (return_stmt -> RETURN expression optional_semicolon .)
+
+
+state 31
+
+    (16) expression -> expression PLUS . expression
+    (16) expression -> . expression PLUS expression
+    (17) expression -> . expression MINUS expression
+    (18) expression -> . expression TIMES expression
+    (19) expression -> . expression DIVIDE expression
+    (20) expression -> . NUMBER
+    (21) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 20
+    IDENTIFIER      shift and go to state 21
+
+    expression                     shift and go to state 38
+
+state 32
+
+    (17) expression -> expression MINUS . expression
+    (16) expression -> . expression PLUS expression
+    (17) expression -> . expression MINUS expression
+    (18) expression -> . expression TIMES expression
+    (19) expression -> . expression DIVIDE expression
+    (20) expression -> . NUMBER
+    (21) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 20
+    IDENTIFIER      shift and go to state 21
+
+    expression                     shift and go to state 39
+
+state 33
+
+    (18) expression -> expression TIMES . expression
+    (16) expression -> . expression PLUS expression
+    (17) expression -> . expression MINUS expression
+    (18) expression -> . expression TIMES expression
+    (19) expression -> . expression DIVIDE expression
+    (20) expression -> . NUMBER
+    (21) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 20
+    IDENTIFIER      shift and go to state 21
+
+    expression                     shift and go to state 40
+
+state 34
+
+    (19) expression -> expression DIVIDE . expression
+    (16) expression -> . expression PLUS expression
+    (17) expression -> . expression MINUS expression
+    (18) expression -> . expression TIMES expression
+    (19) expression -> . expression DIVIDE expression
+    (20) expression -> . NUMBER
+    (21) expression -> . IDENTIFIER
+
+    NUMBER          shift and go to state 20
+    IDENTIFIER      shift and go to state 21
+
+    expression                     shift and go to state 41
+
+state 35
+
+    (10) var_list -> var_list COMMA var_item .
+
+    COMMA           reduce using rule 10 (var_list -> var_list COMMA var_item .)
+    SEMICOLON       reduce using rule 10 (var_list -> var_list COMMA var_item .)
+    VAR             reduce using rule 10 (var_list -> var_list COMMA var_item .)
+    LET             reduce using rule 10 (var_list -> var_list COMMA var_item .)
+    CONST           reduce using rule 10 (var_list -> var_list COMMA var_item .)
+    IDENTIFIER      reduce using rule 10 (var_list -> var_list COMMA var_item .)
+    RETURN          reduce using rule 10 (var_list -> var_list COMMA var_item .)
+    $end            reduce using rule 10 (var_list -> var_list COMMA var_item .)
+
+
+state 36
+
+    (12) var_item -> IDENTIFIER ASSIGN expression .
+    (16) expression -> expression . PLUS expression
+    (17) expression -> expression . MINUS expression
+    (18) expression -> expression . TIMES expression
+    (19) expression -> expression . DIVIDE expression
+
+    COMMA           reduce using rule 12 (var_item -> IDENTIFIER ASSIGN expression .)
+    SEMICOLON       reduce using rule 12 (var_item -> IDENTIFIER ASSIGN expression .)
+    VAR             reduce using rule 12 (var_item -> IDENTIFIER ASSIGN expression .)
+    LET             reduce using rule 12 (var_item -> IDENTIFIER ASSIGN expression .)
+    CONST           reduce using rule 12 (var_item -> IDENTIFIER ASSIGN expression .)
+    IDENTIFIER      reduce using rule 12 (var_item -> IDENTIFIER ASSIGN expression .)
+    RETURN          reduce using rule 12 (var_item -> IDENTIFIER ASSIGN expression .)
+    $end            reduce using rule 12 (var_item -> IDENTIFIER ASSIGN expression .)
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
+
+
+state 37
+
+    (14) assignment -> IDENTIFIER ASSIGN expression optional_semicolon .
+
+    VAR             reduce using rule 14 (assignment -> IDENTIFIER ASSIGN expression optional_semicolon .)
+    LET             reduce using rule 14 (assignment -> IDENTIFIER ASSIGN expression optional_semicolon .)
+    CONST           reduce using rule 14 (assignment -> IDENTIFIER ASSIGN expression optional_semicolon .)
+    IDENTIFIER      reduce using rule 14 (assignment -> IDENTIFIER ASSIGN expression optional_semicolon .)
+    RETURN          reduce using rule 14 (assignment -> IDENTIFIER ASSIGN expression optional_semicolon .)
+    $end            reduce using rule 14 (assignment -> IDENTIFIER ASSIGN expression optional_semicolon .)
+
+
+state 38
+
+    (16) expression -> expression PLUS expression .
+    (16) expression -> expression . PLUS expression
+    (17) expression -> expression . MINUS expression
+    (18) expression -> expression . TIMES expression
+    (19) expression -> expression . DIVIDE expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    SEMICOLON       reduce using rule 16 (expression -> expression PLUS expression .)
+    VAR             reduce using rule 16 (expression -> expression PLUS expression .)
+    LET             reduce using rule 16 (expression -> expression PLUS expression .)
+    CONST           reduce using rule 16 (expression -> expression PLUS expression .)
+    IDENTIFIER      reduce using rule 16 (expression -> expression PLUS expression .)
+    RETURN          reduce using rule 16 (expression -> expression PLUS expression .)
+    $end            reduce using rule 16 (expression -> expression PLUS expression .)
+    COMMA           reduce using rule 16 (expression -> expression PLUS expression .)
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
+
+  ! PLUS            [ reduce using rule 16 (expression -> expression PLUS expression .) ]
+  ! MINUS           [ reduce using rule 16 (expression -> expression PLUS expression .) ]
+  ! TIMES           [ reduce using rule 16 (expression -> expression PLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 16 (expression -> expression PLUS expression .) ]
+
+
+state 39
+
+    (17) expression -> expression MINUS expression .
+    (16) expression -> expression . PLUS expression
+    (17) expression -> expression . MINUS expression
+    (18) expression -> expression . TIMES expression
+    (19) expression -> expression . DIVIDE expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    SEMICOLON       reduce using rule 17 (expression -> expression MINUS expression .)
+    VAR             reduce using rule 17 (expression -> expression MINUS expression .)
+    LET             reduce using rule 17 (expression -> expression MINUS expression .)
+    CONST           reduce using rule 17 (expression -> expression MINUS expression .)
+    IDENTIFIER      reduce using rule 17 (expression -> expression MINUS expression .)
+    RETURN          reduce using rule 17 (expression -> expression MINUS expression .)
+    $end            reduce using rule 17 (expression -> expression MINUS expression .)
+    COMMA           reduce using rule 17 (expression -> expression MINUS expression .)
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
+
+  ! PLUS            [ reduce using rule 17 (expression -> expression MINUS expression .) ]
+  ! MINUS           [ reduce using rule 17 (expression -> expression MINUS expression .) ]
+  ! TIMES           [ reduce using rule 17 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 17 (expression -> expression MINUS expression .) ]
+
+
+state 40
+
+    (18) expression -> expression TIMES expression .
+    (16) expression -> expression . PLUS expression
+    (17) expression -> expression . MINUS expression
+    (18) expression -> expression . TIMES expression
+    (19) expression -> expression . DIVIDE expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    SEMICOLON       reduce using rule 18 (expression -> expression TIMES expression .)
+    VAR             reduce using rule 18 (expression -> expression TIMES expression .)
+    LET             reduce using rule 18 (expression -> expression TIMES expression .)
+    CONST           reduce using rule 18 (expression -> expression TIMES expression .)
+    IDENTIFIER      reduce using rule 18 (expression -> expression TIMES expression .)
+    RETURN          reduce using rule 18 (expression -> expression TIMES expression .)
+    $end            reduce using rule 18 (expression -> expression TIMES expression .)
+    COMMA           reduce using rule 18 (expression -> expression TIMES expression .)
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
+
+  ! PLUS            [ reduce using rule 18 (expression -> expression TIMES expression .) ]
+  ! MINUS           [ reduce using rule 18 (expression -> expression TIMES expression .) ]
+  ! TIMES           [ reduce using rule 18 (expression -> expression TIMES expression .) ]
+  ! DIVIDE          [ reduce using rule 18 (expression -> expression TIMES expression .) ]
+
+
+state 41
+
+    (19) expression -> expression DIVIDE expression .
+    (16) expression -> expression . PLUS expression
+    (17) expression -> expression . MINUS expression
+    (18) expression -> expression . TIMES expression
+    (19) expression -> expression . DIVIDE expression
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+    SEMICOLON       reduce using rule 19 (expression -> expression DIVIDE expression .)
+    VAR             reduce using rule 19 (expression -> expression DIVIDE expression .)
+    LET             reduce using rule 19 (expression -> expression DIVIDE expression .)
+    CONST           reduce using rule 19 (expression -> expression DIVIDE expression .)
+    IDENTIFIER      reduce using rule 19 (expression -> expression DIVIDE expression .)
+    RETURN          reduce using rule 19 (expression -> expression DIVIDE expression .)
+    $end            reduce using rule 19 (expression -> expression DIVIDE expression .)
+    COMMA           reduce using rule 19 (expression -> expression DIVIDE expression .)
+    PLUS            shift and go to state 31
+    MINUS           shift and go to state 32
+    TIMES           shift and go to state 33
+    DIVIDE          shift and go to state 34
+
+  ! PLUS            [ reduce using rule 19 (expression -> expression DIVIDE expression .) ]
+  ! MINUS           [ reduce using rule 19 (expression -> expression DIVIDE expression .) ]
+  ! TIMES           [ reduce using rule 19 (expression -> expression DIVIDE expression .) ]
+  ! DIVIDE          [ reduce using rule 19 (expression -> expression DIVIDE expression .) ]
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for PLUS in state 38 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 38 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 38 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 38 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 39 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 39 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 39 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 39 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 40 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 40 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 40 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 40 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 41 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 41 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 41 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 41 resolved as shift
