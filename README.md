@@ -26,9 +26,3 @@ pip install -r requirements.txt
 
 python run.py
 
-## 👨‍💻 Autor
-[Joselyn](https://github.com/Joselyn7)
-
-## :warning: Licencia
-
-This project is licensed under the terms of the [MIT License](LICENSE).
